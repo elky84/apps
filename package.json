@@ -2,7 +2,7 @@
   "name": "projects",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://elky84.github.io/portfolio",
+  "homepage":"https://elky84.github.io/projects",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
