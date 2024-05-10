@@ -6,13 +6,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import About from './pages/about/About';
+import Lectures from './pages/lectures/Lectures';
 import Header from './components/Layout/Header/Header';
 import Footer from './components/Layout/Footer/Footer';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Community from './pages/community/Community';
+import Chat from './pages/chat/Chat';
 import { CssBaseline } from '@mui/material';
-import Blog from './pages/Blog/Blog';
-import Projects from './pages/projects/Projects';
 
 const customTheme = createTheme({
   palette: {
@@ -46,8 +47,9 @@ root.render(
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
-          <Route path='/blog' element={<Blog />}></Route>
-          <Route path='/projects' element={<Projects />}></Route>
+          <Route path='/lectures' element={<Lectures />}></Route>
+          <Route path='/chat' element={<Chat />}></Route>
+          <Route path='/community' element={<Community />}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>

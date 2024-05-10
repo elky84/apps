@@ -1,10 +1,17 @@
 
 import { Link as RouterLink } from 'react-router-dom';
 
-import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Modal } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from 'react';
+import MenuDrawer from '../Drawer/Drawer';
 
 const Header = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
 
   return (
     <>
@@ -12,23 +19,25 @@ const Header = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-              <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }}>
+              <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }} onClick={toggleDrawer}>
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, color: "primary.main" }}>
-                내 앱
+                교육
               </Typography>
             </Box>
-            {["/", "/about", "/projects", "/blog"].map((path, index) => (
+            {["/", "/about", "/lectures", "/chat", "/community"].map((path, index) => (
                 <Button key={index} color="inherit"  component={RouterLink} to={path} sx={{ color: "primary.main" }}>
-                    {["홈", "소개", "프로젝트", "블로그"][index]}
+                    {["홈", "서비스 소개", "강의", "채팅 상담", "커뮤니티"][index]}
                 </Button>
             ))}
           </Toolbar>
         </Container>
       </AppBar>
+
+      <MenuDrawer open={drawerOpen} onClose={toggleDrawer} />
     </>
   );
 }
   
-export default Header
+export default Header;
