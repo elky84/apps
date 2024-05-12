@@ -11,9 +11,10 @@ import Header from './components/Layout/Header/Header';
 import Footer from './components/Layout/Footer/Footer';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Community from './pages/community/Community';
-import Chat from './pages/chat/Chat';
+
 import { CssBaseline } from '@mui/material';
+import Games from './pages/games/Games';
+import Apps from './pages/apps/Apps';
 
 const customTheme = createTheme({
   palette: {
@@ -48,8 +49,8 @@ root.render(
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/lectures' element={<Lectures />}></Route>
-          <Route path='/chat' element={<Chat />}></Route>
-          <Route path='/community' element={<Community />}></Route>
+          <Route path='/games' element={<Games />}></Route>
+          <Route path='/apps' element={<Apps />}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>

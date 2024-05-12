@@ -23,12 +23,12 @@ const Header = () => {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, color: "primary.main" }}>
-                교육
+                Apps
               </Typography>
             </Box>
-            {["/", "/about", "/lectures", "/chat", "/community"].map((path, index) => (
+            {["/", "/about", "/games", "/apps"].map((path, index) => (
                 <Button key={index} color="inherit"  component={RouterLink} to={path} sx={{ color: "primary.main" }}>
-                    {["홈", "서비스 소개", "강의", "채팅 상담", "커뮤니티"][index]}
+                    {["홈", "소개", "게임", "앱"][index]}
                 </Button>
             ))}
           </Toolbar>
