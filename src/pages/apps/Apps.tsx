@@ -1,80 +1,52 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Product } from '../../components/Product/types';
+import App from '../../components/Product/Product';
 
-const TabMenu = styled.ul`
-  background-color: #121212; /* 어두운 배경 */
-  color: #ffffff; 
-  font-weight: bold;
+const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  list-style: none;
-  margin-top: 10px;
-
-  .submenu {
-    display: flex;
-    width: calc(100% / 3);
-    padding: 10px;
-    font-size: 15px;
-    transition: 0.5s;
-    border-radius: 10px 10px 0px 0px;
-    color: #4d7bf3; /* 블루 톤의 텍스트 */
-  }
-
-  .focused {
-    background-color: #333333;
-    color: #4d7bf3;
-  }
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: #121212;
+  padding: 20px;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
+const CardWrapper = styled.div`
+  width: calc(33.33% - 20px); /* 한 줄에 3개의 카드가 보이도록 설정 */
+  margin-right: 20px; /* 각 카드 사이의 간격을 설정 */
+  margin-bottom: 20px; /* 각 줄 사이의 간격을 설정 */
 
-  &:hover {
-    color: #4d7bf3; /* 블루 톤의 텍스트 */
+  @media screen and (max-width: 1200px) {
+    width: calc(50% - 20px); /* 한 줄에 2개의 카드가 보이도록 설정 */
+  }
+
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 20px); /* 한 줄에 1개의 카드가 보이도록 설정 */
+    margin-right: 0;
   }
 `;
 
 
-const menuArr = [
-  { name: 'Product', path:"/servers?category=product",  component: <p>product</p> },
-  { name: 'Programming', path: "/servers?category=programming", component: <p>programming</p> },
-  { name: 'Career', path: "/servers?category=career", component: <p>career</p> },
-];
-
-const Apps = () => {
-  const [currentTab, setCurrentTab] = useState(0);
+const Apps: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const currentPath = window.location.pathname;
-    const currentIndex = menuArr.findIndex(item => item.path === currentPath);
-    if (currentIndex !== -1) {
-      setCurrentTab(currentIndex);
-    }
+    fetch('/products.json')
+      .then(response => response.json())
+      .then((data: Product[]) => setProducts(data));
   }, []);
 
-  const selectMenuHandler = (index: number) => {
-    setCurrentTab(index);
-  };
+  return (
+    <Container>
+      {products
+        .filter(product => product.category === "app")
+        .map((product) => (
+          <CardWrapper key={product.id}>
+            <App product={product} />
+          </CardWrapper>
+        ))}
+    </Container>
+  );
+};
 
-    return (
-      <>
-        <TabMenu>
-          {menuArr.map((el, index) => (
-            <li
-              key={index}
-              className={index === currentTab ? "submenu focused" : "submenu"}
-              onClick={() => selectMenuHandler(index)}
-            >
-              <StyledLink to={el.path}>{el.name}</StyledLink>
-            </li>
-          ))}
-        </TabMenu>
-        {menuArr[currentTab].component}
-      </>
-      )
-  }
-  
-  export default Apps
+export default Apps;

@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import About from './pages/about/About';
-import Lectures from './pages/lectures/Lectures';
 import Header from './components/Layout/Header/Header';
 import Footer from './components/Layout/Footer/Footer';
 
@@ -15,6 +14,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Games from './pages/games/Games';
 import Apps from './pages/apps/Apps';
+import Product from './pages/products/Product';
 
 const customTheme = createTheme({
   palette: {
@@ -48,9 +48,9 @@ root.render(
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
-          <Route path='/lectures' element={<Lectures />}></Route>
           <Route path='/games' element={<Games />}></Route>
           <Route path='/apps' element={<Apps />}></Route>
+          <Route path="/products/:id" element={<Product/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
