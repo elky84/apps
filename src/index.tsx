@@ -14,7 +14,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Games from './pages/games/Games';
 import Apps from './pages/apps/Apps';
-import Product from './pages/products/Product';
+import ProductDetail from './pages/products/ProductDetail';
 
 const customTheme = createTheme({
   palette: {
@@ -50,7 +50,7 @@ root.render(
           <Route path='/about' element={<About />}></Route>
           <Route path='/games' element={<Games />}></Route>
           <Route path='/apps' element={<Apps />}></Route>
-          <Route path="/products/:id" element={<Product/>} />
+          <Route path="/products/:id" element={<ProductDetail/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>

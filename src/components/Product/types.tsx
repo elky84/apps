@@ -6,5 +6,6 @@ export interface Product {
     screenshots: string[];
     youtube: string;
     category: string;
+    markdownDescription?: string;
   }
   

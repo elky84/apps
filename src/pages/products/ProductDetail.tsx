@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ReactMarkdown from 'react-markdown';
 
 const Container = styled.div`
   background-color: #121212;
   color: #ffffff;
   padding: 20px;
   min-height: 100vh;
-  max-width: 800px; /* 최대 너비 설정 */
-  margin: 0 auto; /* 가운데 정렬 */
+  max-width: 800px;
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
@@ -41,16 +42,29 @@ const Iframe = styled.iframe`
   border-radius: 10px;
 `;
 
+const MarkdownContainer = styled.div`
+  a {
+    color: #82a4f8; /* 어두운 파란색으로 변경 */
+    text-decoration: none;
+
+    &:hover {
+      color: #4d7bf3; /* hover 시 색상 */
+    }
+  }
+`;
+
 interface Product {
   id: number;
   name: string;
   github: string;
   download: string;
   screenshots: string[];
-  youtube: string;
+  youtube: string[];
+  description: string;
+  category: string;
 }
 
-const AppDetail: React.FC = () => {
+const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
@@ -70,8 +84,6 @@ const AppDetail: React.FC = () => {
   return (
     <Container>
       <Title>{product.name}</Title>
-      <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>
-      <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>
       <SlideContainer>
         <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1}>
           {product.screenshots.map((src, idx) => (
@@ -79,11 +91,20 @@ const AppDetail: React.FC = () => {
               <img src={src} alt={`Screenshot ${idx + 1}`} />
             </div>
           ))}
+          {product.youtube.map((src, idx) => (
+            <div key={idx}>
+              <Iframe src={src} allowFullScreen></Iframe>
+            </div>
+          ))}
         </Slider>
       </SlideContainer>
-      <Iframe src={product.youtube} allowFullScreen></Iframe>
+      <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>
+      <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>
+      <MarkdownContainer>
+        <ReactMarkdown>{product.description}</ReactMarkdown>
+      </MarkdownContainer>
     </Container>
   );
 };
 
-export default AppDetail;
+export default ProductDetail;
