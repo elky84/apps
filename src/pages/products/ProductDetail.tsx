@@ -35,38 +35,49 @@ const SlideContainer = styled.div`
   }
 `;
 
-const Iframe = styled.iframe`
-  width: 100%;
-  height: 315px;
-  border: none;
-  border-radius: 10px;
-`;
-
 const MarkdownContainer = styled.div`
   a {
-    color: #82a4f8; /* 어두운 파란색으로 변경 */
+    color: #82a4f8;
     text-decoration: none;
 
     &:hover {
-      color: #4d7bf3; /* hover 시 색상 */
+      color: #4d7bf3;
     }
   }
+`;
+
+const IframeContainer = styled.div`
+  position: relative;
+  width: 100%;
+  padding-top: 62.5%; /* 16:10 Aspect Ratio */
+  border-radius: 10px;
+  overflow: hidden;
+`;
+
+const Iframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 `;
 
 interface Product {
   id: number;
   name: string;
-  github: string;
+  github?: string;
   download: string;
   screenshots: string[];
   youtube: string[];
-  description: string;
+  descriptionPath: string;
   category: string;
 }
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
+  const [markdown, setMarkdown] = useState<string>('');
 
   useEffect(() => {
     fetch('/products.json')
@@ -77,6 +88,14 @@ const ProductDetail: React.FC = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (product) {
+      fetch(product.descriptionPath)
+        .then(response => response.text())
+        .then(setMarkdown);
+    }
+  }, [product]);
+
   if (!product) {
     return <Container>Loading...</Container>;
   }
@@ -86,22 +105,28 @@ const ProductDetail: React.FC = () => {
       <Title>{product.name}</Title>
       <SlideContainer>
         <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1}>
-          {product.screenshots.map((src, idx) => (
+          {product.screenshots.map((item, idx) => (
             <div key={idx}>
-              <img src={src} alt={`Screenshot ${idx + 1}`} />
-            </div>
-          ))}
-          {product.youtube.map((src, idx) => (
-            <div key={idx}>
-              <Iframe src={src} allowFullScreen></Iframe>
+              <img src={item} alt={`Screenshot ${idx + 1}`} />
             </div>
           ))}
         </Slider>
       </SlideContainer>
-      <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>
+      <SlideContainer>
+        <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1}>
+          {product.youtube.map((item, idx) => (
+            <div key={idx}>
+              <IframeContainer>
+                <Iframe src={item} allowFullScreen></Iframe>
+              </IframeContainer>
+            </div>
+          ))}
+        </Slider>
+      </SlideContainer>
+      {product.github && <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>}
       <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>
       <MarkdownContainer>
-        <ReactMarkdown>{product.description}</ReactMarkdown>
+        <ReactMarkdown>{markdown}</ReactMarkdown>
       </MarkdownContainer>
     </Container>
   );

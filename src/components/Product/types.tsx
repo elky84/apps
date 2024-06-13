@@ -4,7 +4,7 @@ export interface Product {
     github?: string;
     download?: string;
     screenshots: string[];
-    youtube: string;
+    youtube: string[];
     category: string;
     markdownDescription?: string;
   }

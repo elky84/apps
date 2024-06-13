@@ -2,7 +2,6 @@
   {
     "id": 1,
     "name": "Product 1",
-    "github": "https://github.com/example/product1",
     "download": "https://example.com/download/product1",
     "screenshots": [
       "https://via.placeholder.com/400x300.png?text=Screenshot+1",
@@ -10,11 +9,11 @@
       "https://via.placeholder.com/400x300.png?text=Screenshot+3"
     ],
     "youtube": [
-      "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "https://www.youtube.com/embed/DbCmOiRCU38",
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 1 소개\n\nProduct 1은 여러분의 삶을 더욱 편리하게 만들어줍니다.\n\n**주요 기능**:\n- **기능 1**: 놀라운 성능 제공\n- **기능 2**: 사용하기 쉬운 인터페이스\n\n더 자세한 정보는 [GitHub 페이지](https://github.com/example/product1)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "game"
   },
   {
@@ -32,7 +31,7 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 2 소개\n\nProduct 2는 일상적인 문제를 혁신적으로 해결해줍니다.\n\n**핵심 포인트**:\n- 혁신적인 디자인\n- 사용자 친화적인 인터페이스\n\n더 많은 정보는 [다운로드 페이지](https://example.com/download/product2)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "game"
   },
   {
@@ -50,7 +49,7 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 3 소개\n\nProduct 3와 함께 미래를 경험하세요.\n\n**하이라이트**:\n- 미래 지향적인 기술\n- 원활한 통합\n\n자세한 내용은 [GitHub 페이지](https://github.com/example/product3)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "game"
   },
   {
@@ -68,7 +67,7 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 4 소개\n\nProduct 4는 강력한 기능으로 삶을 단순화합니다.\n\n**장점**:\n- 작업을 단순화\n- 생산성 향상\n\n자세한 내용은 [GitHub 페이지](https://github.com/example/product4)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "app"
   },
   {
@@ -86,7 +85,7 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 5 소개\n\nProduct 5를 통해 최고의 성능을 경험하세요.\n\n**주요 기능**:\n- 높은 효율성\n- 비용 효율성\n\n더 많은 정보는 [다운로드 페이지](https://example.com/download/product5)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "app"
   },
   {
@@ -104,7 +103,7 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ",
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
-    "description": "### Product 6 소개\n\nProduct 6는 여러분의 모든 요구를 충족하도록 설계되었습니다.\n\n**특징**:\n- 종합적인 지원\n- 견고한 아키텍처\n\n더 자세한 정보는 [GitHub 페이지](https://github.com/example/product6)에서 확인하세요.",
+    "descriptionPath": "/markdowns/product1.md",
     "category": "app"
   }
 ]

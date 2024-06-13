@@ -79,14 +79,24 @@ const App: React.FC<AppProps> = ({ product }) => {
             ))}
           </Slider>
         </SlideContainer>
-        <iframe
-          width="100%"
-          height="315"
-          src={product.youtube}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <SlideContainer>
+          <Slider {...settings}>
+          {product.youtube.map((src, idx) => (
+              <div key={idx}>
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={src}
+                  title={src}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe> 
+              </div>
+            ))}
+        </Slider>
+        </SlideContainer>
+
       </CardContent>
     </Card>
   );
