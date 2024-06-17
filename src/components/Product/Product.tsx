@@ -51,6 +51,16 @@ const SlideContainer = styled.div`
   }
 `;
 
+const Tag = styled.span`
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.3em 0.6em;
+  margin: 0.2em;
+  border-radius: 0.2em;
+  font-size: 0.9em;
+`;
+
 interface AppProps {
   product: Product;
 }
@@ -68,8 +78,16 @@ const App: React.FC<AppProps> = ({ product }) => {
     <Card to={`/products/${product.id}`}>
       <CardContent>
         <Title>{product.name}</Title>
+        {product.summary}
         {product.github && <StyledLink to={product.github} target="_blank">GitHub</StyledLink>}
         {product.download && <StyledLink to={product.download} target="_blank">Download</StyledLink>}
+
+        <div>
+          {product.tags.map((tag, idx) => (
+            <Tag key={idx}>{tag}</Tag>
+          ))}
+        </div>
+
         <SlideContainer>
           <Slider {...settings}>
             {product.screenshots.map((src, idx) => (

@@ -14,7 +14,9 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "game"
+    "summary": "서머리",
+    "category": "game",
+    "tags": ["초코", "파이"]
   },
   {
     "id": 2,
@@ -32,7 +34,9 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "game"
+    "summary": "서머리",
+    "category": "game",
+    "tags": ["초코", "파이"]
   },
   {
     "id": 3,
@@ -50,7 +54,9 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "game"
+    "summary": "서머리",
+    "category": "game",
+    "tags": ["초코", "파이"]
   },
   {
     "id": 4,
@@ -68,7 +74,9 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "app"
+    "summary": "서머리",
+    "category": "app",
+    "tags": ["초코", "파이"]
   },
   {
     "id": 5,
@@ -86,7 +94,9 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "app"
+    "summary": "서머리",
+    "category": "app",
+    "tags": ["초코", "파이"]
   },
   {
     "id": 6,
@@ -104,6 +114,8 @@
       "https://www.youtube.com/embed/dQw4w9WgXcQ"
     ],
     "descriptionPath": "/markdowns/product1.md",
-    "category": "app"
+    "summary": "서머리",
+    "category": "app",
+    "tags": ["초코", "파이"]
   }
 ]
