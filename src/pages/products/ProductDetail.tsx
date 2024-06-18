@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactMarkdown from 'react-markdown';
+import { Product } from '../../components/Product/types';
 
 const Container = styled.div`
   background-color: #121212;
@@ -63,16 +64,15 @@ const Iframe = styled.iframe`
   border: none;
 `;
 
-interface Product {
-  id: number;
-  name: string;
-  github?: string;
-  download: string;
-  screenshots: string[];
-  youtube: string[];
-  descriptionPath: string;
-  category: string;
-}
+const Tag = styled.span`
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.3em 0.6em;
+  margin: 0.2em;
+  border-radius: 0.2em;
+  font-size: 0.9em;
+`;
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -89,7 +89,7 @@ const ProductDetail: React.FC = () => {
   }, [id]);
 
   useEffect(() => {
-    if (product) {
+    if (product && product.descriptionPath) {
       fetch(product.descriptionPath)
         .then(response => response.text())
         .then(setMarkdown);
@@ -103,6 +103,13 @@ const ProductDetail: React.FC = () => {
   return (
     <Container>
       <Title>{product.name}</Title>
+      {product.github && <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>}
+      {product.download && <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>}
+      <div>
+        {product.tags.map((tag, idx) => (
+          <Tag key={idx}>{tag}</Tag>
+        ))}
+      </div>
       <SlideContainer>
         <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1}>
           {product.screenshots.map((item, idx) => (
@@ -123,8 +130,6 @@ const ProductDetail: React.FC = () => {
           ))}
         </Slider>
       </SlideContainer>
-      {product.github && <p><StyledLink href={product.github} target="_blank">GitHub</StyledLink></p>}
-      <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>
       <MarkdownContainer>
         <ReactMarkdown>{markdown}</ReactMarkdown>
       </MarkdownContainer>
