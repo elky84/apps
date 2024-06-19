@@ -12,7 +12,7 @@ const Container = styled.div`
   color: #ffffff;
   padding: 20px;
   min-height: 100vh;
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
 `;
 
@@ -110,6 +110,9 @@ const ProductDetail: React.FC = () => {
           <Tag key={idx}>{tag}</Tag>
         ))}
       </div>
+      <MarkdownContainer>
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </MarkdownContainer>
       <SlideContainer>
         <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1}>
           {product.screenshots.map((item, idx) => (
@@ -130,9 +133,6 @@ const ProductDetail: React.FC = () => {
           ))}
         </Slider>
       </SlideContainer>
-      <MarkdownContainer>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-      </MarkdownContainer>
     </Container>
   );
 };
