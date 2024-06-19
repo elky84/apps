@@ -12,8 +12,7 @@ import Footer from './components/Layout/Footer/Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { CssBaseline } from '@mui/material';
-import Games from './pages/games/Games';
-import Apps from './pages/apps/Apps';
+
 import ProductDetail from './pages/products/ProductDetail';
 
 const customTheme = createTheme({
@@ -48,8 +47,8 @@ root.render(
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
-          <Route path='/games' element={<Games />}></Route>
-          <Route path='/apps' element={<Apps />}></Route>
+          <Route path='/?category=game' element={<Home />}></Route>
+          <Route path='/?category=app' element={<Home />}></Route>
           <Route path="/products/:id" element={<ProductDetail/>} />
         </Routes>
         <Footer/>

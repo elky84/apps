@@ -1,34 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slider from "react-slick";
-import { Product } from './types';
-import { Link } from 'react-router-dom';
+import { Product as ProductType } from './types';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Card = styled(Link)`
+const Card = styled.div`
   background-color: #1f1f1f;
   color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  margin-right: 20px; /* 각 카드 사이의 간격을 설정 */
-  margin-bottom: 20px; /* 각 줄 사이의 간격을 설정 */
-  padding: 20px; /* 내용이 좁게 보이지 않도록 패딩 추가 */
-  display: block; /* 링크를 블록 레벨 요소로 설정하여 전체 영역 클릭 가능하도록 함 */
-  text-decoration: none; /* 기본 링크 스타일 제거 */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: block;
+  text-decoration: none;
 `;
 
 const CardContent = styled.div`
   padding: 15px;
 
-  /* 링크를 각각 새로운 라인에 표시하기 위한 스타일 */
   a {
-    display: block; /* 링크를 블록 레벨 요소로 설정하여 각각 새로운 라인에 표시 */
-    margin-bottom: 5px; /* 각 링크 사이의 간격을 설정 */
+    display: block; 
+    margin-bottom: 5px;
   }
 `;
 
-const Title = styled.h2`
-  font-size: 20px;
+const Title = styled(Link)`
+  font-size: 24px;
   color: #4d7bf3;
+  text-decoration: none;
+
+  &:hover {
+    color: #82a4f8;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -51,21 +55,42 @@ const SlideContainer = styled.div`
   }
 `;
 
+const TagsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
+
 const Tag = styled.span`
   display: inline-block;
   background-color: #e0e0e0;
   color: #333;
-  padding: 0.3em 0.6em;
+  padding: 0.2em 0.4em;
   margin: 0.2em;
   border-radius: 0.2em;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ccc;
+  }
 `;
 
-interface AppProps {
-  product: Product;
+interface ProductProps {
+  product: ProductType;
 }
 
-const App: React.FC<AppProps> = ({ product }) => {
+const Product: React.FC<ProductProps> = ({ product }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const updateQueryParams = (tag: string) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set('tag', tag);
+    navigate({ search: searchParams.toString() });
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -75,18 +100,18 @@ const App: React.FC<AppProps> = ({ product }) => {
   };
 
   return (
-    <Card to={`/products/${product.id}`}>
+    <Card>
       <CardContent>
-        <Title>{product.name}</Title>
+        <Title to={`/products/${product.id}`}>{product.name}</Title>
         {product.summary}
         {product.github && <StyledLink to={product.github} target="_blank">GitHub</StyledLink>}
         {product.download && <StyledLink to={product.download} target="_blank">Download</StyledLink>}
 
-        <div>
+        <TagsContainer>
           {product.tags.map((tag, idx) => (
-            <Tag key={idx}>{tag}</Tag>
+            <Tag key={idx} onClick={() => updateQueryParams(tag)}>{tag}</Tag>
           ))}
-        </div>
+        </TagsContainer>
 
         <SlideContainer>
           <Slider {...settings}>
@@ -99,7 +124,7 @@ const App: React.FC<AppProps> = ({ product }) => {
         </SlideContainer>
         <SlideContainer>
           <Slider {...settings}>
-          {product.youtube.map((src, idx) => (
+            {product.youtube.map((src, idx) => (
               <div key={idx}>
                 <iframe
                   width="100%"
@@ -112,7 +137,7 @@ const App: React.FC<AppProps> = ({ product }) => {
                 ></iframe> 
               </div>
             ))}
-        </Slider>
+          </Slider>
         </SlideContainer>
 
       </CardContent>
@@ -120,4 +145,4 @@ const App: React.FC<AppProps> = ({ product }) => {
   );
 };
 
-export default App;
+export default Product;

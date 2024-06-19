@@ -56,7 +56,7 @@
     "descriptionPath": "/markdowns/product1.md",
     "summary": "서머리",
     "category": "game",
-    "tags": ["초코", "파이"]
+    "tags": ["초코"]
   },
   {
     "id": 4,
@@ -76,7 +76,7 @@
     "descriptionPath": "/markdowns/product1.md",
     "summary": "서머리",
     "category": "app",
-    "tags": ["초코", "파이"]
+    "tags": ["파이"]
   },
   {
     "id": 5,
@@ -96,7 +96,7 @@
     "descriptionPath": "/markdowns/product1.md",
     "summary": "서머리",
     "category": "app",
-    "tags": ["초코", "파이"]
+    "tags": ["초코"]
   },
   {
     "id": 6,
@@ -116,6 +116,6 @@
     "descriptionPath": "/markdowns/product1.md",
     "summary": "서머리",
     "category": "app",
-    "tags": ["초코", "파이"]
+    "tags": ["파이"]
   }
 ]

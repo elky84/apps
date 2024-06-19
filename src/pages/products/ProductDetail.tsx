@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -64,7 +64,7 @@ const Iframe = styled.iframe`
   border: none;
 `;
 
-const Tag = styled.span`
+const Tag = styled(Link)`
   display: inline-block;
   background-color: #e0e0e0;
   color: #333;
@@ -72,6 +72,11 @@ const Tag = styled.span`
   margin: 0.2em;
   border-radius: 0.2em;
   font-size: 0.9em;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #ccc;
+  }
 `;
 
 const ProductDetail: React.FC = () => {
@@ -107,7 +112,7 @@ const ProductDetail: React.FC = () => {
       {product.download && <p><StyledLink href={product.download} target="_blank">Download</StyledLink></p>}
       <div>
         {product.tags.map((tag, idx) => (
-          <Tag key={idx}>{tag}</Tag>
+          <Tag key={idx} to={`/?tag=${tag}`}>{tag}</Tag>
         ))}
       </div>
       <MarkdownContainer>
