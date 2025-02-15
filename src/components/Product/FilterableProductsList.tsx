@@ -10,9 +10,11 @@ const FilterableProductList: React.FC = () => {
   const tag = query.get('tag');
 
   useEffect(() => {
-    fetch('/products.json')
+    fetch(process.env.PUBLIC_URL + '/products.json')
       .then(response => response.json())
-      .then((data: ProductType[]) => setProducts(data));
+      .then((data: ProductType[]) => {
+        setProducts(data)
+      });
   }, []);
 
   const filteredProducts = products.filter(product => {

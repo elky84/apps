@@ -85,7 +85,7 @@ const ProductDetail: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>('');
 
   useEffect(() => {
-    fetch('/products.json')
+    fetch(process.env.PUBLIC_URL + '/products.json')
       .then(response => response.json())
       .then((data: Product[]) => {
         const product = data.find(p => p.id === parseInt(id ?? "1"));

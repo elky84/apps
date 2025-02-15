@@ -55,6 +55,25 @@ const SlideContainer = styled.div`
   }
 `;
 
+const SingleImage = styled.img`
+  width: 100%;
+  max-width: 600px;  /* 이미지가 너무 크지 않도록 */
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;  /* 가운데 정렬 */
+`;
+
+const VideoFrame = styled.iframe`
+  width: 100%;
+  max-width: 600px;
+  height: 315px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: auto;  /* 클릭 문제 해결 */
+`;
+
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -99,6 +118,9 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     slidesToScroll: 1
   };
 
+  const getImageUrl = (url: string) => 
+    url.startsWith("http") ? url : `${process.env.PUBLIC_URL}${url}`;
+
   return (
     <Card>
       <CardContent>
@@ -113,33 +135,49 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           ))}
         </TagsContainer>
 
-        <SlideContainer>
-          <Slider {...settings}>
-            {product.screenshots.map((src, idx) => (
-              <div key={idx}>
-                <img src={src} alt={`Screenshot ${idx + 1}`} />
-              </div>
-            ))}
-          </Slider>
-        </SlideContainer>
-        <SlideContainer>
-          <Slider {...settings}>
-            {product.youtube.map((src, idx) => (
-              <div key={idx}>
-                <iframe
-                  width="100%"
-                  height="315"
-                  src={src}
-                  title={src}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe> 
-              </div>
-            ))}
-          </Slider>
-        </SlideContainer>
+        {product.screenshots && product.screenshots.length > 0 && (
+          <SlideContainer>
+            {product.screenshots.length > 1 ? (
+              <Slider {...settings}>
+                {product.screenshots.map((src, idx) => (
+                  <div key={idx}>
+                    <img src={getImageUrl(src)} alt={`Screenshot ${idx + 1}`} />
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              <SingleImage src={getImageUrl(product.screenshots[0])} alt="Screenshot" />
+            )}
+          </SlideContainer>
+        )}
 
+        {product.youtube && product.youtube.length > 0 && (
+          <SlideContainer>
+            {product.youtube.length > 1 ? (
+              <Slider {...settings}>
+                {product.youtube.map((src, idx) => (
+                  <div key={idx}>
+                    <VideoFrame
+                      src={src}
+                      title={`YouTube Video ${idx + 1}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></VideoFrame>
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              <VideoFrame
+                src={product.youtube[0]}
+                title="YouTube Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></VideoFrame>
+            )}
+          </SlideContainer>
+        )}
       </CardContent>
     </Card>
   );

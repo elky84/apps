@@ -26,9 +26,9 @@ const Header = () => {
                 Apps
               </Typography>
             </Box>
-            {["/", "/about", "/?category=game", "/?category=app"].map((path, index) => (
+            {["/", "/?category=game", "/?category=app", "/?category=library"].map((path, index) => (
                 <Button key={index} color="inherit"  component={RouterLink} to={path} sx={{ color: "primary.main" }}>
-                    {["홈", "소개", "게임", "앱"][index]}
+                    {["홈", "게임", "앱", "라이브러리"][index]}
                 </Button>
             ))}
           </Toolbar>

@@ -4,26 +4,25 @@ import { Product as ProductType } from './types';
 import Product from './Product';
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  column-count: 3;
+  column-gap: 20px;
   background-color: #121212;
   padding: 20px;
-`;
-
-const CardWrapper = styled.div`
-  width: calc(33.33% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
 
   @media screen and (max-width: 1200px) {
-    width: calc(50% - 20px);
+    column-count: 2;
   }
 
   @media screen and (max-width: 768px) {
-    width: calc(100% - 20px);
-    margin-right: 0;
+    column-count: 1;
   }
+`;
+
+const CardWrapper = styled.div`
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  break-inside: avoid; /* 카드가 컬럼 중간에서 끊기지 않도록 */
 `;
 
 interface ProductsListProps {
