@@ -1,0 +1,95 @@
+[
+  {
+    "id": 0,
+    "name": "GM - 2D MMORPG",
+    "tags": ["C#", "Unity3D", "DotNetty", "MongoDB", ".NET 9"],
+    "summary": "Unity 3D, C# DotNetty 로 구현한 습작 2D MMORPG",
+    "download": "https://drive.google.com/file/d/14gzmzYJ13sKcmOlVEuwDe238V0AN18wu/view?usp=drive_link",
+    "screenshots": [
+      "/screenshots/gm_01.jpeg",
+      "/screenshots/gm_02.jpeg",
+      "/screenshots/gm_03.jpeg",
+      "/screenshots/gm_04.jpeg",
+      "/screenshots/gm_05.jpeg",
+      "/screenshots/gm_06.jpeg"
+    ],
+    "youtube": [
+      "https://www.youtube.com/embed/Ot17tzF75MM",
+      "https://www.youtube.com/embed/BVraOJ3WA5s",
+      "https://www.youtube.com/embed/ObgokCLej_E",
+      "https://www.youtube.com/embed/jlFLemggveQ"
+    ],
+    "category": "game"
+  },
+  {
+    "id": 1,
+    "name": "light",
+    "tags": ["C++", "IOCP", "Direct-X"],
+    "summary": "C++로 개발한 IOCP, OLE DB, flatbuffers 등을 이용한 게임 서버 라이브러리. (Direct-X 9.0C를 이용한 클라이언트 기능들도 포함되어 있지만, 서버 위주의 구현)",
+    "github": "https://github.com/elky84/light",
+    "screenshots": [],
+    "youtube": [],
+    "category": "library"
+  },
+  {
+    "id": 2,
+    "name": "SRPG",
+    "tags": ["C#", "Unity3D", ".NET 9"],
+    "summary": "2D SRPG 게임",
+    "download": "https://drive.google.com/file/d/1_-8mTDF4bBEhYmt2-0e6ReAMbZtMGNA6/view?usp=sharing",
+    "screenshots": [
+      "/screenshots/SRPG_01.jpeg",
+      "/screenshots/SRPG_02.jpeg",
+      "/screenshots/SRPG_03.jpeg",
+      "/screenshots/SRPG_04.jpeg",
+      "/screenshots/SRPG_05.jpeg",
+      "/screenshots/SRPG_06.jpeg"
+    ],
+    "youtube": [
+      "https://www.youtube.com/embed/ojFI4uvDnhA"
+    ],
+    "category": "game"
+  },
+  {
+    "id": 3,
+    "name": "web-crawler",
+    "tags": ["ASP.NET CORE 9", "Abot2", "C#", "MongoDB", ".NET 9"],
+    "summary": "Abot2, ASP.NET 9로 구현한 웹 (인벤, 루리웹, 오늘의 유머, FM코리아 등) 크롤러 & 알리미.",
+    "github": "https://github.com/elky84/web-crawler",
+    "screenshots": [],
+    "youtube": [],
+    "category": "app"
+  },
+  {
+    "id": 4,
+    "name": "stock-crawler",
+    "tags": ["ASP.NET CORE 9", "C#", "MongoDB", ".NET 9"],
+    "summary": "ASP.NET 9로 구현한 네이버 주식 크롤러, 분석기\n다양한 알고리즘으로 종목 선별 기능.\n조건에 따른 자동 매수/매도를 통한 모의 투자 기능.",
+    "github": "https://github.com/elky84/stock-crawler",
+    "screenshots": [],
+    "youtube": [],
+    "category": "app"
+  },
+  {
+    "id": 5,
+    "name": "lol-crawler",
+    "tags": ["ASP.NET CORE 9", "C#", "MongoDB", ".NET 9"],
+    "summary": "ASP.NET 9로 구현한 LOL 게임 시작/결과 추적기\n최초 버전은 Java 8, Spring Boot로 구현했었으나, 디버깅, 배포용이성으로 C# 포팅",
+    "github": "https://github.com/elky84/lol-crawler",
+    "screenshots": [],
+    "youtube": [],
+    "category": "app"
+  },
+  {
+    "id": 6,
+    "name": "NineWars (2D Auto Battler)",
+    "tags": ["Direct-X", "C++"],
+    "summary": "DirectX 9.0, C++로 구현한 습작 2D Auto Battler.\nFootball Manager 시리즈의 영향을 받아, 전략 설정, 유닛 배치를 기반으로 동작하는 게임",
+    "github": "https://github.com/elky84/NineWars",
+    "screenshots": [],
+    "youtube": [
+      "https://www.youtube.com/embed/cXwk5lkvm_Y"
+    ],
+    "category": "game"
+  }
+]
